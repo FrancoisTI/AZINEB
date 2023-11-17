@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aftertoy</title>
+<link rel="icon" type="image/png" sizes="16x16" href="../static/Img/favicon-16x16.png">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: beige;">
+<div class="container">
+		<br/>
+		<h1 class="text-center">REGISTRAR PRODUCTOS</h1>
+		<br/>
+		<form action="producto/registrar" method="post" th:object="${producto}">
+
+			<div class="form-group">
+				<label for="inputCod">Código</label> <input type="text" readonly="readonly" th:field="*{id_producto}"
+					class="form-control" id="inputCod" placeholder="Código">
+			</div>
+			<div class="form-group">
+				<label for="inputNom">Nombre de Producto: </label> <input type="text" th:field="*{nombre_producto}"
+					class="form-control" id="inputNom" placeholder="Nombre">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputStk">Stock: </label> <input type="number" th:field="*{stock_producto}"
+						class="form-control" id="inputStk" placeholder="0">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputPrec">Precio: </label> <input type="number" th:field="*{precio_producto}"
+						step="0.01" class="form-control" id="inputPrec" placeholder="0.00">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="inputEstado">Estado</label> <select id="inputEstado" th:field="*{id_estado}"
+						class="form-control">
+						<option value="-1">Seleccione...</option>
+						<option th:each="c : ${lstEstado}" th:value="${c.id_estado}"
+							th:text="${c.est_actual}"></option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="inputCat">Categoría</label> <select id="inputCat" th:field="*{id_categoria}"
+						class="form-control">
+						<option value="-1">Seleccione...</option>
+						<option th:each="c : ${lstCategoria}" th:value="${c.id_categoria}"
+							th:text="${c.nombre_categoria}"></option>
+					</select>
+
+				</div>
+				<div class="form-group col-md-4">
+					<label for="inputProv">Proveedor</label> <select id="inputProv" th:field="*{id_proveedor}"
+						class="form-control">
+						<option value="-1">Seleccione...</option>
+						<option th:each="p : ${lstProveedor}"
+							th:value="${p.id_proveedor}" th:text="${p.nombre_proveedor}"></option>
+					</select>
+				</div>
+			</div>
+
+			<button th:text="${boton}" type="submit" class="btn btn-success">Registrar</button>
+			<a href="/cargar" class="btn btn-warning">Nuevo</a>
+			<a href="/listado" class="btn btn-info">Listado de Producto</a>
+		</form>
+		<br/>
+		<div th:class="${clase}" role="alert" th:text="${mensaje}"></div>
+	</div>
+</body>
+</html>

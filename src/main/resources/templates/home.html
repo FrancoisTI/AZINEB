@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Aftertoy</title>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body style="background-color: beige;">
+	<div class="container">
+		<header th:fragment="header">
+			<br />
+			<h1 class="text text-center">AFTERTOY</h1>
+			<section style="width: 65%; float: left;">
+				<h2>Bienvenidos</h2>
+			</section>
+			<br />
+			<br />
+
+			<p>
+				Ud se ha identificado como :
+			<div th:class="${clase}" role="alert" th:text="${mensaje}"></div> <strong></strong>
+			</p>
+		</header>
+		<br />
+		<main>
+			<nav style="width: 25%; float: left;">
+				<ul class="list-group">
+					<a class="list-group-item list-group-item-action" href="/listado">Productos disponibles</a>
+					<a class="list-group-item list-group-item-action" href="/reportes">Reporte de Productos</a>
+					<a class="list-group-item list-group-item-action" href="/">Cerrar Sesión</a>
+				</ul>
+			</nav>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+
+		</main>
+		<footer th:fragment="footer">
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<!-- Popper JS -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+			<!-- Latest compiled JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		</footer>
+	</div>
+
+</body>
+
+</html>

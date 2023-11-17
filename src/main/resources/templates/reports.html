@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aftertoy</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body style="background-color: beige;">	
+<div class="container">
+	<br/>
+	<h1 class="text-center">REPORTE DE PRODUCTOS - AFTERTOY</h1>
+	<br/>
+			
+		<form action="/reporte/filtro" method="post" 
+		      th:object="${producto}">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="inputCat">Reporte de productos por categoría:</label> 
+					<select id="inputCat" th:field="*{id_categoria}"
+						class="form-control">
+						<option value="-1">Seleccione...</option>
+						<option th:each="c : ${lstCategoria}" 
+							th:value="${c.id_categoria}"
+							th:text="${c.nombre_categoria}"></option>
+					</select>
+				</div>
+			</div>		
+			<button th:text="${boton}"  type="submit" class="btn btn-success"></button>
+			<a href="/reporte/graficos" class="btn btn-outline-danger">Reporte - Gráfico</a>
+		</form>		
+<br/>	
+<hr size="2px" color="black"/>
+<br/>
+	<a href="/listado/AzinebProductos/pdf" class="btn btn-secondary">Reporte de Productos</a>
+	<a href="/home" class="btn btn-outline-info">Volver al Inicio</a>
+</div>
+
+
+</body>
+</html>

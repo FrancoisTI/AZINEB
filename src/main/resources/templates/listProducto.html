@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Aftertoy</title>
+<link rel="icon" href="../static/Img/logo - ico.ico" type="img/x-ico" >
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+
+<body style="background-color: beige;">
+	<div class="container">
+		<br/>
+		<h1 class="text-center">PRODUCTOS DISPONIBLES - AFTERTOY</h1>
+		<br/>
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Producto</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Categoría</th>
+					<th scope="col">Proveedor</th>
+					<th class="text-center" scope="col">-</th>
+					<th class="text-center" scope="col">-</th>
+				</tr>
+			</thead>
+			<tbody style="background-color: white;">
+				<tr th:each="pr : ${lstProducto}">
+					<th scope="row" th:text="${pr.id_producto}"></th>
+					<td th:text="${pr.nombre_producto}"></td>
+					<td th:text="${pr.stock_producto}"></td>
+					<td th:text="${pr.precio_producto}"></td>
+					<td th:text="${pr.objEstado.est_actual}"></td>
+					<td th:text="${pr.objCategoria.nombre_categoria}"></td>
+					<td th:text="${pr.objProveedor.nombre_proveedor}"></td>
+					<td align="center">
+						<form action="/buscar" method="post">
+						<input type="hidden" name="id_producto" th:value="${pr.id_producto}">
+						<button class="btn btn-warning">Editar</button>
+						</form>					
+					</td>
+					<td align="center">
+						<form action="/eliminar" method="post">
+						<input type="hidden" name="id_producto" th:value="${pr.id_producto}">
+						<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+	<a href="/cargar" class="btn btn-primary">Registrar Producto</a>
+	<br/>
+	<br/>	
+<hr size="2px" color="black"/>
+<br/>
+	<a href="/home" class="btn btn-outline-info">Volver al Inicio</a>
+	
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</html>
